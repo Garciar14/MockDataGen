@@ -1,0 +1,122 @@
+---
+title: 'MockDataGen R Markdown / Module #12'
+author: "Ronald Garcia"
+date: "2025-04-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+Function 1: generate_names()
+
+Purpose: 
+Generates a list of randomly selected full names
+
+Inputs: 
+input integer (n) for number of names to generate, must be a positive whole number. 
+
+Outputs:
+A character vector of the length inputed (n). 
+
+Additional Info: 
+The function will randomly pair first and last names from each of the two vectors. Names may possibly repeat if n is larger than number of unique combinations. 
+
+```{r cars}
+#Example
+generate_names <- function(n = 10) {
+  first_names <- c("John", "Emily", "Alex", "Sam", "Chris", "Jordan")
+  last_names <- c("Smith", "Johnson", "Garcia", "Lee", "Patel", "Davis")
+  sample(paste(sample(first_names, n, replace = TRUE),
+               sample(last_names, n, replace = TRUE)), n)
+}
+
+generate_names(5)
+
+```
+
+Function 2: generate_emails()
+
+Purpose: Generate a list of randomly selected emails
+
+Inputs: 
+(n) number of emails needed.
+
+Outputs:
+character vector with (n) number of emails needed in correct formats.
+
+Additional Info: 
+This will use full lowercase formatiing. The emails are created using the names in the "names" variable.
+
+```{r}
+#Example
+generate_emails <- function(n = 10) {
+  names <- tolower(gsub(" ", ".", generate_names(n)))
+  domains <- c("example.com", "testmail.org", "mockdata.io")
+  paste0(names, "@", sample(domains, n, replace = TRUE))
+}
+
+generate_emails(5)
+
+```
+
+Function 3: generate_ages()
+
+Purpose: Generates random ages if needed for data 
+
+Inputs:
+(n) number of ages needed. min_age = minimum age allowed. max_age = maximum age allowed. 
+
+Outputs:
+Vector with the ages.
+
+Additional Info:
+Ages are repeatable. 
+```{r}
+#Example
+generate_ages <- function(n = 10, min_age = 18, max_age = 30) {
+  sample(min_age:max_age, n, replace = TRUE)
+}
+
+
+generate_ages(5)
+
+
+```
+
+Function 4: generate_addresses()
+
+Purpose: Generates random  addresses if needed for data.
+
+Inputs:
+(n) number of addresses needed.
+
+Outputs:
+Vector with all the addresses needed.
+
+Additional Info:
+It combines random street numbers, names, cities, states, and zip codes.
+```{r}
+#Example
+generate_addresses <- function(n = 10) {
+  streets <- c("Maple St", "Oak Ave", "Pine Rd", "Elm Dr", "Cedar Ln", "Birch Blvd")
+  cities <- c("Springfield", "Rivertown", "Hillview", "Lakewood", "Greenville")
+  states <- c("CA", "NY", "TX", "FL", "IL")
+  zips <- sample(10000:99999, n, replace = TRUE)
+  
+  addresses <- paste0(
+    sample(100:9999, n, replace = TRUE), " ",
+    sample(streets, n, replace = TRUE), ", ",
+    sample(cities, n, replace = TRUE), ", ",
+    sample(states, n, replace = TRUE), " ",
+    zips
+  )
+  
+  return(addresses)
+}
+
+generate_addresses(5)
+```
+
