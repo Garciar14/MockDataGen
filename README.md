@@ -6,11 +6,8 @@ Provides simple functions to generate mock datasets including names, ages, email
 You can install the development version of this package directly from GitHub:
 
 ```r
-# Install remotes if needed
-install.packages("remotes")
-
-# Install MockDataGen from GitHub
-remotes::install_github("garciar14/MockDataGen")
+Install MockDataGen from GitHub
+devtools::install_github("garciar14/MockDataGen")
 ```
 ## USAGE
 
