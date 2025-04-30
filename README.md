@@ -10,21 +10,30 @@ Install MockDataGen from GitHub
 devtools::install_github("garciar14/MockDataGen")
 ```
 ## USAGE
-
-# Generate 5 random names
-generate_names(5)
-
-# Generate 5 random email addresses
-generate_emails(5)
-
-# Generate 5 random ages between 21 and 60
-generate_ages(5, min_age = 21, max_age = 60)
-
-# Generate 5 fake mailing addresses
-generate_addresses(5)
-
-# Create a complete mock dataset
-generate_mock_data(n = 5, min_age = 18, max_age = 65, seed = 123)
+```r
+generate_names(3)
+#> [1] "Emily Smith"   "John Davis"    "Alex Johnson"
+```
+```r
+generate_addresses(2)
+#> [1] "5932 Cedar Ln, Rivertown, NY 63958"
+#> [2] "823 Oak Ave, Lakewood, IL 27491"
+```
+```r
+generate_ages(3, min_age = 21, max_age = 50)
+#> [1] 45 22 39
+```
+```r
+generate_emails(3)
+#> [1] "alex.johnson@gmail.com"   "emily.smith@yahoo.com"   "john.davis@outlook.com"
+```
+```r
+generate_mock_data(2)
+#>          name                  email age                           address
+#> 1 John Davis   john.davis@yahoo.com  29   5932 Cedar Ln, Rivertown, NY 63958
+#> 2 Emily Smith emily.smith@gmail.com  36   823 Oak Ave, Lakewood, IL 27491
+```
+## FUNCTIONS
 
 | Function               | Description                                   |
 |------------------------|-----------------------------------------------|
@@ -34,3 +43,10 @@ generate_mock_data(n = 5, min_age = 18, max_age = 65, seed = 123)
 | `generate_addresses()` | Generate full fake addresses                  |
 | `generate_mock_data()` | Combine all fields into one data frame        |
 
+## LICENSE
+
+This package is licensed under the CC0 License
+
+## AUTHOR
+Ronald Garcia
+garciar14@usf.edu
